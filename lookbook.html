@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Look-Book | F.O.F Clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+U8Fz+5dq7bcn8R5GblqjFJ7IxRVt3VdV3xX4XQpQ4da6AShHvLM3Yf6tCZNU0y7hYNdKO3Bovu9W+4X+ZfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="store.css">
+<style>
+  /* ---- Book viewer (namespaced so it never fights store.css) ---- */
+  .fof-book-section{ --ink:#241a12; --paper:#f7efe1; --rust:#a8481f; --indigo:#233a55; --gold:#a9793f;
+    padding:20px 0 64px; }
+  .fof-book-section .wrap{ max-width:1040px; }
+  .book-meta{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin:0 0 28px; flex-wrap:wrap; }
+  .book-meta h2{ font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(1.3rem,2.4vw,1.7rem); color:var(--ink); margin:0; }
+  .book-meta p{ font-family:'Poppins',sans-serif; font-size:.92rem; color:#5a4c3d; margin:4px 0 0; max-width:52ch; }
+
+  .book-stage{ position:relative; perspective:2400px; display:flex; justify-content:center; padding:10px 0 6px; }
+  .book-shadow{ position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:min(78vw,420px); height:26px;
+    background:radial-gradient(ellipse at center, rgba(36,26,18,.35), transparent 72%); filter:blur(2px); }
+
+  .book{ position:relative; width:min(84vw,440px); aspect-ratio:3/4; transform-style:preserve-3d; cursor:pointer; }
+  .book::before{ content:""; position:absolute; left:-8px; top:2%; bottom:2%; width:16px; border-radius:6px;
+    background:linear-gradient(90deg,var(--indigo),#16233350); z-index:0; }
+
+  .leaf{ position:absolute; inset:0; transform-origin:left center; background:var(--paper);
+    border-radius:2px 10px 10px 2px; box-shadow:1px 2px 10px rgba(20,14,8,.28);
+    transition:transform .85s cubic-bezier(.62,.04,.32,1);
+    display:flex; flex-direction:column; overflow:hidden; backface-visibility:hidden; }
+  .leaf.turned{ transform:rotateY(-172deg); }
+
+  .leaf .figure{ flex:1; margin:16px 16px 0; border-radius:2px; overflow:hidden; background:#e9ddc9;
+    display:flex; align-items:center; justify-content:center; position:relative; }
+  .leaf .figure img{ width:100%; height:100%; display:block; border-radius: 20px;}
+  .leaf .figure.empty{ border:1.5px dashed #b7a685; color:#8a7a5e; font-family:'Poppins',sans-serif; font-size:.82rem;
+    flex-direction:column; gap:6px; text-align:center; padding:12px; }
+  .leaf .figure.empty i{ font-size:1.3rem; }
+
+  .leaf .caption{ padding:12px 18px 16px; font-family:'Poppins',sans-serif; }
+  .leaf .caption h3{ font-family:'Playfair Display',serif; font-size:1.02rem; font-weight:700; color:var(--ink); margin:0 0 3px; }
+  .leaf .caption p{ font-size:.78rem; color:#7a6a52; margin:0; }
+  .leaf .pageno{ position:absolute; bottom:8px; right:14px; font-family:'Poppins',sans-serif; font-size:.68rem; color:#a4906c; }
+
+  .leaf.cover{ background:linear-gradient(155deg,var(--indigo),#1a2c41 60%,var(--indigo));
+    align-items:center; justify-content:center; text-align:center; color:#f4ead4; }
+  .leaf.cover::after{ content:""; position:absolute; inset:0; opacity:.12; pointer-events:none;
+    background:repeating-linear-gradient(45deg,#f4ead4 0 2px, transparent 2px 14px); }
+  .leaf.cover .brand-mark{ font-family:'Playfair Display',serif; font-weight:900; font-size:2.2rem; letter-spacing:.02em; }
+  .leaf.cover .brand-sub{ font-family:'Poppins',sans-serif; font-size:.78rem; letter-spacing:.14em; color:var(--gold); margin-top:6px; }
+  .leaf.cover .cover-line{ width:46px; height:2px; background:var(--gold); margin:16px auto; }
+  .leaf.cover .cover-hint{ font-family:'Poppins',sans-serif; font-size:.76rem; color:#cfc3a6; }
+
+  .book-controls{ display:flex; align-items:center; justify-content:center; gap:18px; margin-top:22px; }
+  .book-nav-btn{ width:42px; height:42px; border-radius:50%; border:1px solid #d9cbaf; background:#fff;
+    color:var(--ink); font-size:.9rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .15s, transform .15s; }
+  .book-nav-btn:hover:not(:disabled){ background:var(--paper); transform:translateY(-1px); }
+  .book-nav-btn:disabled{ opacity:.35; cursor:default; }
+  .book-progress{ font-family:'Poppins',sans-serif; font-size:.82rem; color:#5a4c3d; min-width:112px; text-align:center; }
+  .book-progress .bar{ width:150px; height:3px; background:#e6d9bf; border-radius:2px; margin-top:6px; overflow:hidden; }
+  .book-progress .bar span{ display:block; height:100%; background:var(--rust); transition:width .5s ease; }
+
+  @media (prefers-reduced-motion:reduce){ .leaf{ transition:none; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#catalogPageGrid">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="fof-clothing-store.html">
+      <span class="brand-mark">F.O.F</span>
+      <span class="brand-sub">Field&nbsp;Of&nbsp;Fashion</span>
+    </a>
+    <nav class="subnav">
+      <a href="fof-clothing-store.html">Home</a>
+      <a href="fof-clothing-store.html#order">Shop</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <header class="catalog-page-header">
+      <div>
+        <p class="eyebrow">Look-Book</p>
+        <h1>F.O.F Fashion Look-Book</h1>
+        <p class="catalog-page-intro">Turn the pages to browse through all fabric available on this website,Have a clear shot on what you want order.</p>
+      </div>
+    </header>
+
+    <section class="fof-book-section" id="catalogPageGrid">
+      <div class="book-meta">
+        <h2>The Lookbook</h2>
+      </div>
+
+      <div class="book-stage">
+        <div class="book-shadow"></div>
+        <div class="book" id="fofBook" aria-live="polite"></div>
+      </div>
+
+      <div class="book-controls">
+        <button class="book-nav-btn" id="bookPrev" aria-label="Previous page"><i class="fas fa-chevron-left"></i></button>
+        <div class="book-progress">
+          <div id="bookLabel">Cover — tap to begin</div>
+          <div class="bar"><span id="bookBar" style="width:0%"></span></div>
+        </div>
+        <button class="book-nav-btn" id="bookNext" aria-label="Next page"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:none; margin-top:0; padding-top:0;">
+      <span>© 2026 F.O.F Clothing (Field Of Fashion). All rights reserved.</span>
+      <a href="fof-clothing-store.html">Back to store home</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- 32 catalog slots. Fill in "img" and "title"/"tag" for the empty ones as you shoot more pieces. ----
+const photos = [
+  {title:"White Traditional Agbada", tag:"Traditional · Photo", img:"ash-office-blazer.jpg"},
+  {title:"Aso-Oke Set – Women's Traditional ", tag:"Traditional · Photo", img:"olive-corporate-shirt-trouser.jpg"},
+  {title:"Mint-Green Native - Agbada Outfit", tag:"Traditional · Photo", img:"ankara-print-trouser-set.jpg"},
+  {title:"Navy Blue Traditional Kaftan", tag:"Kaftan · Photo", img:"denim-jacket-indigo.jpg"},
+  {title:"Blue Statement Set – Checkered Panel ", tag:"Kaftan · Photo", img:"joggers-tee-set-olive.jpg"},
+  {title:"Black Traditional Native Set", tag:"Kaftan · Photo", img:"cotton-polo-shirt-cream.jpg"},
+  {title:"White Embroidered Native Set", tag:"Kaftan · Photo", img:"casual-trouser-shirt-combo-khaki.jpg"},
+  {title:"Green Two-Piece Native Wear ", tag:"Kaftan · Photo", img:"fof-branded-hoodie-charcoal.jpg"},
+  {title:"Sage Green Traditional Set ", tag:"Kaftan · Photo", img:"office-native-wear-ash.jpg"},
+  {title:"Ivory Traditional Embroidered Set", tag:"Kaftan · Photo", img:"white-formal-shirt-long-sleeve.jpg"},
+  {title:"White Short-Sleeve Native Set", tag:"Kaftan · Photo", img:"short-sleeve-casual-shirt-blue.jpg"},
+  {title:"Black Pinstripe Native Set", tag:"Kaftan · Photo", img:"graphic-tshirt-cream.jpg"},
+  {title:"Royal Blue Kaftan ", tag:"Kaftan · Photo", img:"oversized-tee-sand.png"},
+  {title:"Royal Blue Traditional Set", tag:"Kaftan · Photo", img:"tracksuit-set-charcoal.jpg"},
+  {title:"Charcoal Double-Breasted Suit", tag:"Suit · Photo", img:"charcoal-three-piece-suit.jpg"},
+  {title:"White Formal Suit", tag:"Suit · Photo", img:"black-tuxedo-formal-event.jpg"},
+  {title:"Beige Suit", tag:"Suit · Photo", img:"midnight-double-breasted-suit.jpg"},
+  {title:"Turquoise Double-Breasted Suit", tag:"Suit · Photo", img:"classic-ash-suit.jpg"},
+  {title:"Black Tuxedo", tag:"Suit · Photo", img:"linen-summer-suit-cream.jpg"},
+  {title:"Mustard Yellow - Double-Breasted Suit", tag:"Suit · Photo", img:"ivory-wedding-suit-custom-fit.jpg"},
+  {title:"Beige Casual Two-Piece Set", tag:"Casual · Photo", img:"brown-native-cap-fila.jpg"},
+  {title:"Purple Floral Two-Piece Set", tag:"Casual · Photo", img:"casual wear.jpg"},
+  {title:"Cream Casual Shirt & Dark Trousers", tag:"Casual · Photo", img:"ivory-dress-shirt.jpg"},
+  {title:"Black & Red Casual Track Set", tag:"Casual · Photo", img:"traditional-embroidered-anka-print.jpg"},
+  {title:"Floral Print Shirt-Jacket", tag:"Casual · Photo", img:"navy-office-kaftan-semi-formal.jpg"},
+  {title:"Royalty Patterned Casual Jacket", tag:"Casual · Photo", img:"charcoal-formal-trouser.jpg"},
+  {title:"Deep Blue Printed Shirt & White Trousers", tag:"Casual · Photo", img:"casual-plain-fabric-ash.jpg"},
+  {title:"Green Casual Jacket", tag:"Catalog · Photo", img:"cat 5.png"},
+  {title:"Black Pinstripe Native Top", tag:"Catalog · Photo", img:"cat 2.png"},
+  {title:"Brown Maroon Trouser ", tag:"Catalog · Photo", img:"cat 3.png"},
+  {title:"Cream Textured Native Top", tag:"Catalog · Photo", img:"cat 4.png"},
+  {title:"Navy Blue Embroidered Native Top", tag:"Catalog · Photo", img:"cat 1.png"},
+];
+while (photos.length < 32) photos.push({title:"", tag:"", img:"", empty:true});
+
+const bookEl = document.getElementById('fofBook');
+const total = photos.length; // 32 photo leaves, plus the cover = leaf 0
+let current = 0;
+
+function leafHTML(p, n){
+  if (p.empty){
+    return `<div class="leaf" data-i="${n}">
+      <div class="figure empty"><i class="fas fa-plus"></i><span>Add photo ${n}</span></div>
+      <div class="caption"><h3>&nbsp;</h3><p>Slot reserved</p></div>
+      <span class="pageno">${n} / ${total}</span>
+    </div>`;
+  }
+  return `<div class="leaf" data-i="${n}">
+    <div class="figure"><img src="${p.img}" alt="${p.title}" loading="lazy"
+      onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<i class=\\'fas fa-image\\'></i><span>Image not found</span>';"></div>
+    <div class="caption"><h3>${p.title}</h3><p>${p.tag}</p></div>
+    <span class="pageno">${n} / ${total}</span>
+  </div>`;
+}
+
+let html = `<div class="leaf cover" data-i="0">
+  <div>
+    <div class="brand-mark">F.O.F</div>
+    <div class="brand-sub">FIELD OF FASHION</div>
+    <div class="cover-line"></div>
+    <div class="cover-hint">F.O.F Fashion Lookbook</div>
+  </div>
+</div>`;
+photos.forEach((p,idx)=> html += leafHTML(p, idx+1));
+bookEl.innerHTML = html;
+
+const leaves = Array.from(bookEl.querySelectorAll('.leaf'));
+const prevBtn = document.getElementById('bookPrev');
+const nextBtn = document.getElementById('bookNext');
+const label = document.getElementById('bookLabel');
+const bar = document.getElementById('bookBar');
+
+function render(){
+  leaves.forEach((leaf,i)=>{
+    if (i < current){ leaf.classList.add('turned'); leaf.style.zIndex = i; }
+    else { leaf.classList.remove('turned'); leaf.style.zIndex = leaves.length - i; }
+  });
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === total;
+  label.textContent = current === 0 ? 'Cover — tap to begin' : `Photo ${current} of ${total}`;
+  bar.style.width = (current / total * 100) + '%';
+}
+function next(){ if (current < total){ current++; render(); } }
+function prev(){ if (current > 0){ current--; render(); } }
+
+nextBtn.addEventListener('click', next);
+prevBtn.addEventListener('click', prev);
+bookEl.addEventListener('click', (e)=>{
+  const r = bookEl.getBoundingClientRect();
+  (e.clientX - r.left > r.width/2) ? next() : prev();
+});
+document.addEventListener('keydown', (e)=>{
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+let touchX = null;
+bookEl.addEventListener('touchstart', e=> touchX = e.touches[0].clientX, {passive:true});
+bookEl.addEventListener('touchend', e=>{
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) dx < 0 ? next() : prev();
+  touchX = null;
+}, {passive:true});
+
+render();
+</script>
+</body>
+</html>

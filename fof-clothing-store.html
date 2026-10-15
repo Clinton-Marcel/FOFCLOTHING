@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F.O.F Clothing — Field Of Fashion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+U8Fz+5dq7bcn8R5GblqjFJ7IxRVt3VdV3xX4XQpQ4da6AShHvLM3Yf6tCZNU0y7hYNdKO3Bovu9W+4X+ZfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="store.css">
+</head>
+<body>
+
+<a class="skip-link" href="#catalog">Skip to content</a>
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark">F.O.F</span>
+      <span class="brand-sub">Field&nbsp;Of&nbsp;Fashion</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
+    <nav class="mainnav" id="mainnav">
+      <a href="#catalog">Catalog</a>
+      <a href="#order">Shop</a>
+      <a href="#about">F.O.F Clothing</a>
+      <a href="lookbook.html">LookBook</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-label="Store announcements">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ============ ANNOUNCEMENTS — SLIDES LIKE A TESTIMONIAL CAROUSEL ============ -->
+<section class="announcement-section" aria-label="Featured announcements">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Latest Updates</p>
+      <h2>Announcements</h2>
+      <p>Fresh tailoring updates, new arrivals and style notes — monthly announcements from F.O.F, right here.</p>
+    </div>
+
+    <div class="announcement-slider" id="announcementSlider">
+      <article class="announcement-slide active">
+        <div class="announcement-visual"><img src="fof.png" alt="" ></div>
+        <div class="content">
+           <span class="tag">Message to Prospect and Existing Customers.</span>
+          <h3>Welcome to F.O.F Clothing</h3>
+          <p>Experience a new era of men's fashion with premium quality, modern designs, and exceptional craftsmanship. Discover styles that inspire confidence and elevate your everyday look.</p>
+        </div>
+      </article>
+      <article class="announcement-slide">
+        <div class="announcement-visual"><img src="first.png" alt=""></div>
+        <div class="content">
+               <span class="tag">Our Online Presence.</span>
+          <h3>Our Official Webstore Is Now Live!</h3>
+          <p>Shop the latest collections from the comfort of your home. Enjoy secure shopping, made-to-order fashion, fast delivery, and a seamless online experience designed just for you.</p>
+        </div>
+      </article>
+      <article class="announcement-slide">
+        <div class="announcement-visual"><img src="second.png" alt=""></div>
+        <div class="content">
+                <span class="tag">Shop Freely.</span>
+          <h3>Shop Smart, Shop Secure</h3>
+          <p>Your satisfaction is our priority. Please review our ordering guidelines, provide accurate information, and follow the checkout process to ensure a smooth, secure, and hassle-free shopping experience.</p>
+        </div>
+      </article>
+      <article class="announcement-slide">
+        <div class="announcement-visual"><img src="look.png" alt=""></div>
+        <div class="content">
+          <span class="tag">New Look-Book.</span>
+          <h3>Step Into the F.O.F Look-Book</h3>
+          <p>Browse every style and fabric in our look-book to see exactly what you want before you place your order.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="slider-dots" id="announcementDots">
+      <button class="slider-dot active" type="button" data-index="0" aria-label="Show announcement 1"></button>
+      <button class="slider-dot" type="button" data-index="1" aria-label="Show announcement 2"></button>
+      <button class="slider-dot" type="button" data-index="2" aria-label="Show announcement 3"></button>
+      <button class="slider-dot" type="button" data-index="3" aria-label="Show announcement 4"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Male Fashion · Made To Order</p>
+      <h1>TAILORED FOR<br><span>THE MODERN MAN.</span></h1>
+      <p>F.O.F Clothing — Field Of Fashion — is a made-to-order menswear store. Browse through Collections, pick your fabric and confirm your size, finalize with payment, and we deliver straight to you.</p>
+      <div class="cta-row">
+        <a href="#order" class="btn orange">Place An Order</a>
+        <a href="#catalog" class="btn alt marketplace-btn" aria-label="View Catalog">
+          <i class="fas fa-store"></i>
+          <span>View Weekly Catalog</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-tag">
+      <span class="lbl">Order Card</span>
+      Brand — F.O.F Clothing {Field Of Fashion}<br>
+      Confirmation — within 24 hours<br>
+      Customer Care — 09020425785
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATALOG TEASER ============ -->
+<section id="catalog">
+  <div class="wrap">
+    <div class="catalog-teaser-row">
+      <div class="sec-head" style="margin-bottom:0;">
+        <p class="eyebrow">Catalog</p>
+        <h2>Limited-Time Collections</h2>
+        <p>A taste of the photos and fabrics we post weekly.</p>
+      </div>
+    </div>
+    <div class="catalog-grid" id="catalogGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="stripe" id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Place An Order</p>
+      <h2>Order Unique and Modern-style Piece.</h2>
+      <p>Select fabric that best suits your occasion below to add it to your cart, then continue to WhatsApp to finalize your order.</p>
+    </div>
+    <div class="order-layout">
+      <div class="order-main">
+        <div id="orderCategories"></div>
+      </div>
+
+      <aside class="cart-card">
+        <div class="cart-head">
+          <h4>Your Cart</h4>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <p class="cart-empty">Tap any piece to add it to your cart. Your selected items will appear here before you continue to WhatsApp.</p>
+        </div>
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong id="cartTotal">₦0</strong>
+        </div>
+        <div class="cart-actions">
+          <button type="button" class="btn alt" id="clearCartBtn">Clear Cart</button>
+          <button type="button" class="btn orange" id="checkoutBtn" disabled>Continue on WhatsApp</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY PROFILE ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="profile-grid">
+      <div>
+        <p class="eyebrow">Who We Are</p>
+        <h2>Company Profile</h2>
+        <p style="color:var(--gray-dark); margin-top:16px;">F.O.F Clothing — short for Field Of Fashion — is a menswear store built for men who take their wardrobe seriously. We are designers that work with you to produce traditional, formal and casual pieces from quality fabric, cut to your size and made to order.</p>
+        <p style="color:var(--gray-dark); margin-top:12px;">Every piece on this store is made after an order is placed and payment is verified, so what you get is cut specifically for you — not pulled off a rack. We also take on personal designs and fabric colour changes on request; reach Customer Care on 09020425785 for anything outside the standard catalog.</p>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><b id="statCollections">50+</b><span>Wear Collections</span></div>
+        <div class="stat"><b id="statSlots">15 days</b><span>Delivey time</span></div>
+        <div class="stat"><b>24h</b><span>Order Confirmation</span></div>
+        <div class="stat"><b>Pickup </b><span>and Delivery Available</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>F.O.F Clothing</h4>
+        <p>Field Of Fashion — made-to-order menswear. Traditional, kaftan, suit, office, casual and unisex pieces, cut to your size.</p>
+      </div>
+      <div>
+        <h4>Order Info</h4>
+        <ul>
+          <li>Confirmation: within 24 hours of payment</li>
+          <li>Delivery time: shared at confirmation</li>
+          <li>Sizing information: shared on WhatsApp</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Customer Care</h4>
+        <ul>
+          <li>Call/WhatsApp: 09020425785</li>
+          <li>Personal designs on request</li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 F.O.F Clothing (Field Of Fashion). All rights reserved.</span>
+      <span>Built with care for the modern man.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA — edit these arrays to add real items. Each item carries
+   its own price, so the catalog, cart and WhatsApp total always
+   agree with each other.
+   ============================================================ */
+const NOTICES = [
+  "Welcome to F.O.F Clothing — Field Of Fashion.",
+  "Free guidance on fabric choice for every order.",
+  "Confirmation messages will be sent to customers after order for further instructions.",
+  "Pickup and delivery across Nigeria.",
+  "Custom sizing.",
+  "Personal designs and fabric colour changes on request.",
+  "Shop freely and smartly."
+];
+
+const CATEGORY_COLORS = {
+  traditional: "linear-gradient(135deg,#C7460C,#FF6A1A)",
+  kaftan:      "repeating-linear-gradient(45deg,#FF6A1A,#FF6A1A 10px,#C7460C 10px,#C7460C 20px)",
+  suit:        "linear-gradient(135deg,#201812,#5A4F45)",
+  single:      "linear-gradient(135deg,#FF6A1A,#C7460C)",
+  office:      "linear-gradient(135deg,#201812,#C7460C)",
+  casual:      "repeating-linear-gradient(90deg,#FF6A1A,#FF6A1A 8px,#ffffff 8px,#ffffff 16px)",
+  unisex:      "linear-gradient(135deg,#C7460C,#FFE7D1)"
+};
+
+
+
+const CATEGORIES = [
+  { id:"traditional", title:"Traditional Wears", note:"Native cuts in premium fabric.", items:[
+    { name:"White Traditional Agbada", desc:"Smooth white fabric with delicate gold embroidery, offering a clean and luxurious traditional finish.", price:120000 },
+    { name:"Aso-Oke Set – Women's Traditional ", desc:"Striped aso-oke agbada and trouser set with a gold gele and beaded jewelry.", price:135000 },
+    { name:"Mint-Green Native - Agbada Outfit", desc:"Premium mint-green fabric with intricate cream embroidery, designed for a refined traditional look.", price:120000 },
+  ]},
+  { id:"kaftan", title:"Kaftan Wears", note:"Everyday to formal kaftan styles.", items:[
+    { name:"Navy Blue Traditional Kaftan", desc:"A refined navy-blue kaftan featuring subtle geometric embroidery along the neckline and pocket.", price:75000 },
+    { name:"Blue Statement Set – Checkered Panel ", desc:"Royal blue set with white piping and an asymmetric checkered panel overlay.", price:65000 },
+    { name:"Black Traditional Native Set", desc:"Premium dark fabric with a subtle textured finish, tailored into a long-sleeve native top with a matching traditional cap and trousers.", price:60000 },
+    { name:"White Embroidered Native Set", desc:"Premium white fabric designed with elegant black-and-gold linear embroidery across the chest.", price:65000 },
+    { name:"Green Two-Piece Native Wear ", desc:"Green native top with tasseled zip pockets, worn with matching trousers.", price:60000 },
+    { name:"Sage Green Traditional Set ", desc:"Two-piece native wear in sage green with a striped fila cap.", price:50000 },
+    { name:"Ivory Traditional Embroidered Set", desc:"A sophisticated ivory-toned native outfit featuring clean geometric embroidery on the neckline and chest pocket.", price:55000 },
+    { name:"White Short-Sleeve Native Set", desc:"A fresh white two-piece native outfit finished with distinctive patterned detailing around the neckline and chest pocket.", price:55000 },
+    { name:"Black Pinstripe Native Set", desc:"Fine black fabric decorated with delicate vertical pinstripes, creating a sleek and structured appearance.", price:55000 },
+    { name:"Royal Blue Kaftan ", desc:"Buttoned blue kaftan worn with matching trousers, styled for the office.", price:65000 },
+    { name:"Royal Blue Traditional Set", desc:"Vibrant royal-blue fabric styled into a long traditional tunic with matching trousers.", price:55000 },
+  ]},
+  { id:"suit", title:"Suit Wears", note:"Formal and semi-formal suiting.", items:[
+    { name:"Charcoal Double-Breasted Suit", desc:"Refined charcoal fabric tailored into a sophisticated double-breasted suit with structured lapels and a clean, professional finish.", price:180000 },
+    { name:"White Formal Suit", desc:"Crisp white suiting fabric styled with a black shirt for a sharp, sophisticated contrast.", price:200000 },
+    { name:"Beige Suit", desc:"Single-breasted beige suit with a patterned tie and boutonniere.", price:170000 },
+    { name:"Turquoise Double-Breasted Suit", desc:"Vibrant turquoise suiting fabric crafted into a sharp double-breasted jacket with matching trousers.", price:220000 },
+    { name:"Black Tuxedo", desc:"Classic black tuxedo with satin lapels, worn with a bow tie and boutonniere.", price:200000 },
+    { name:"Mustard Yellow - Double-Breasted Suit", desc:"Rich mustard-yellow suiting fabric tailored into a sharp double-breasted jacket with matching trousers.", price:220000 }
+  ]},
+  { id:"casual", title:"Casual Wears", note:"Relaxed, everyday pieces.", items:[
+    { name:"Beige Casual Two-Piece Set", desc:"Lightweight beige fabric crafted into a relaxed two-piece set for effortless everyday style.", price:50000 },
+    { name:"Purple Floral Two-Piece Set", desc:"Smooth purple fabric paired with vibrant floral-print accents on the sleeves and lower top, creating a stylish and coordinated two-piece outfit.", price:45000 },
+    { name:"Cream Casual Shirt & Dark Trousers", desc:"Lightweight cream fabric crafted into a relaxed short-sleeve shirt, paired with dark patterned trousers.", price:50000 },
+    { name:"Black & Red Casual Track Set", desc:"Smooth black fabric designed into a coordinated casual outfit with striking red and white side panels.", price:55000 },
+    { name:"Floral Print Shirt-Jacket ", desc:"Black-and-white floral shirt-jacket worn with dark trousers.", price:65000 },
+    { name:"Royalty Patterned Casual Jacket", desc:" A bold statement piece featuring a vibrant red base with intricate lion and ornamental prints.", price:70000 },
+    { name:"Deep Blue Printed Shirt & White Trousers", desc:"Lightweight black fabric featuring subtle white printed motifs, paired with crisp white trousers for a clean, modern contrast.", price:50000 },
+  ]},
+];
+
+const CATALOG_ITEMS = [
+  { type:"photo", cat:"Casual", label:"Green Casual Jacket", price:35000 },
+  { type:"photo", cat:"Native Set", label:"Black Pinstripe Native Top", price:60000 },
+  { type:"photo", cat:"Native Set", label:"Cream Textured Native Top", price:65000 },
+  { type:"photo", cat:"Native Set", label:"Navy Blue Embroidered Native Top", price:65000 },
+  { type:"photo", cat:"Casual", label:"Brown Maroon Trouser", price:25000 },
+];
+
+const CATALOG_IMAGE_MAP = {
+  "Green Casual Jacket": "cat 5.png",
+  "Black Pinstripe Native Top": "cat 2.png",
+  "Brown Maroon Trouser": "cat 3.png",
+  "Cream Textured Native Top": "cat 4.png",
+  "Navy Blue Embroidered Native Top": "cat 1.png",
+};
+/*
+const CATEGORY_IMAGE_MAP = {
+  traditional: "traditional-embroidered-anka-print.jpg",
+  kaftan: "navy-office-kaftan-semi-formal.jpg",
+  suit: "classic-ash-suit.jpg",
+  single: "brown-native-cap-fila.jpg",
+  office: "olive-corporate-shirt-trouser.jpg",
+  casual: "short-sleeve-casual-shirt-blue.jpg",
+  unisex: "fof-branded-hoodie-charcoal.jpg"
+};
+*/
+const ITEM_IMAGE_MAP = {
+  "White Traditional Agbada": "ash-office-blazer.jpg",
+  "Aso-Oke Set – Women's Traditional ": "olive-corporate-shirt-trouser.jpg",
+  "Mint-Green Native - Agbada Outfit": "ankara-print-trouser-set.jpg",
+  "Buba & Sokoto – Adire Weave": "traditional-adire-weave-sample.png",
+  "Etibo Top – Linen Blend": "traditional-adire-weave-sample.png",
+  "Navy Blue Traditional Kaftan": "denim-jacket-indigo.jpg",
+  "Blue Statement Set – Checkered Panel ": "joggers-tee-set-olive.jpg",
+  "Black Traditional Native Set": "cotton-polo-shirt-cream.jpg",
+  "White Embroidered Native Set": "casual-trouser-shirt-combo-khaki.jpg",
+  "Green Two-Piece Native Wear ": "fof-branded-hoodie-charcoal.jpg",
+  "Sage Green Traditional Set ": "office-native-wear-ash.jpg",
+  "Ivory Traditional Embroidered Set": "white-formal-shirt-long-sleeve.jpg",
+  "White Short-Sleeve Native Set": "short-sleeve-casual-shirt-blue.jpg",
+  "Black Pinstripe Native Set": "graphic-tshirt-cream.jpg",
+  "Royal Blue Kaftan ": "oversized-tee-sand.png",
+  "Royal Blue Traditional Set": "tracksuit-set-charcoal.jpg",
+  "Festival Kaftan – Sequin Trim": "kaftan-printed-fabric-bold-pattern.png",
+  "Heritage Kaftan – Handwoven": "traditional-embroidered-anka-print.jpg",
+  "Two-Piece Suit – Charcoal": "charcoal-three-piece-suit.jpg",
+  "Three-Piece Suit – Classic": "charcoal-three-piece-suit.jpg",
+  "Slim Fit Suit – Modern Cut": "classic-ash-suit.jpg",
+  "Double-Breasted Suit": "midnight-double-breasted-suit.jpg",
+  "Charcoal Double-Breasted Suit": "charcoal-three-piece-suit.jpg",
+  "White Formal Suit": "black-tuxedo-formal-event.jpg",
+  "Beige Suit": "midnight-double-breasted-suit.jpg",
+  "Turquoise Double-Breasted Suit": "classic-ash-suit.jpg",
+  "Black Tuxedo": "linen-summer-suit-cream.jpg",
+  "Mustard Yellow - Double-Breasted Suit": "ivory-wedding-suit-custom-fit.jpg",
+  "Native Cap (Fila)": "brown-native-cap-fila.jpg",
+  "Dress Shirt – Single": "ivory-dress-shirt.jpg",
+  "Trouser – Single": "charcoal-formal-trouser.jpg",
+  "Waistcoat – Single": "casual-plain-fabric-ash.jpg",
+  "Corporate Shirt & Trouser": "olive-corporate-shirt-trouser.jpg",
+  "Office Kaftan – Semi-Formal": "navy-office-kaftan-semi-formal.jpg",
+  "Blazer – Office Fit": "ash-office-blazer.jpg",
+  "Formal Shirt – Long Sleeve": "white-formal-shirt-long-sleeve.jpg",
+  "Office Native Wear": "office-native-wear-ash.jpg",
+  "Beige Casual Two-Piece Set": "brown-native-cap-fila.jpg",
+  "Purple Floral Two-Piece Set": "casual wear.jpg",
+  "Floral Print Shirt-Jacket ": "navy-office-kaftan-semi-formal.jpg",
+  "Cream Casual Shirt & Dark Trousers": "ivory-dress-shirt.jpg",
+  "Casual Trouser & Shirt Combo": "casual-trouser-shirt-combo-khaki.jpg",
+  "Hoodie – F.O.F Branded": "fof-branded-hoodie-charcoal.jpg",
+  "Black & Red Casual Track Set": "traditional-embroidered-anka-print.jpg",
+  "Deep Blue Printed Shirt & White Trousers": "casual-plain-fabric-ash.jpg",
+  "Royalty Patterned Casual Jacket": "charcoal-formal-trouser.jpg"
+};
+
+const TYPE_ICONS = { photo:"fa-camera", };
+
+let cart = [];
+
+/* ============================================================
+   TICKER
+   ============================================================ */
+function renderTicker(){
+  const track = document.getElementById('tickerTrack');
+  const build = () => NOTICES.map((n) =>
+    `<span class="ticker-item">${n}</span>`
+  ).join('');
+  track.innerHTML = build() + build(); // duplicate for seamless loop
+}
+
+/* ============================================================
+   ANNOUNCEMENT SLIDER — fades/slides between cards, like the
+   testimonial carousel pattern, plus clickable dots.
+   ============================================================ */
+let activeAnnouncement = 0;
+let announcementTimer = null;
+
+function goToAnnouncement(index){
+  const slides = document.querySelectorAll('.announcement-slide');
+  const dots = document.querySelectorAll('.slider-dot');
+  if(!slides.length) return;
+  activeAnnouncement = (index + slides.length) % slides.length;
+  slides.forEach((slide, idx) => slide.classList.toggle('active', idx === activeAnnouncement));
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeAnnouncement));
+}
+
+function initAnnouncementSlider(){
+  const slides = document.querySelectorAll('.announcement-slide');
+  if(slides.length < 2) return;
+  if(announcementTimer) clearInterval(announcementTimer);
+  announcementTimer = setInterval(() => goToAnnouncement(activeAnnouncement + 1), 10000);
+}
+
+document.getElementById('announcementDots').addEventListener('click', (e) => {
+  const dot = e.target.closest('.slider-dot');
+  if(!dot) return;
+  goToAnnouncement(parseInt(dot.dataset.index, 10));
+  initAnnouncementSlider();
+});
+
+/* ============================================================
+   CATALOG TEASER
+   ============================================================ */
+function renderCatalog(filter){
+  const grid = document.getElementById('catalogGrid');
+  const items = CATALOG_ITEMS.filter(it => filter === 'all' || it.type === filter);
+  if(!items.length){
+    grid.innerHTML = '<div class="catalog-empty">No items in this section yet — check back soon.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(it => {
+    const imgFile = CATALOG_IMAGE_MAP[it.label];
+    const imgMarkup = imgFile ? `<img src="${imgFile}" alt="${it.label}"><div class="cover"></div>` : '';
+    return `
+      <button class="catalog-tile" type="button" data-label="${it.label}">
+        <div class="catalog-swatch" style="background:${CATEGORY_COLORS[it.cat.toLowerCase()] || CATEGORY_COLORS.traditional}">
+          <span class="badge">${it.type}</span>
+          <span class="catalog-price-badge">₦${it.price.toLocaleString()}</span>
+          ${imgMarkup}
+          <i class="fas ${TYPE_ICONS[it.type]} catalog-icon"></i>
+          <span>${it.label}</span>
+        </div>
+        <div class="catalog-cap">${it.label}</div>
+        <div class="catalog-note">${it.cat} collection</div>
+      </button>
+    `;
+  }).join('');
+}
+
+document.getElementById('catalogGrid').addEventListener('click', (e) => {
+  const tile = e.target.closest('.catalog-tile');
+  if(!tile) return;
+
+  const label = tile.dataset.label;
+  const cat = CATEGORIES.find(entry => entry.items.some(item => item.name === label));
+  if(!cat) return;
+
+  const idx = cat.items.findIndex(item => item.name === label);
+  if(idx < 0) return;
+
+  addToCart(cat.id, idx);
+  document.getElementById('order').scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+/* ============================================================
+   ORDER CATEGORIES — rendered from CATEGORIES so slot numbers,
+   swatches and prices can never drift out of sync.
+   ============================================================ */
+function renderOrderCategories(){
+  const container = document.getElementById('orderCategories');
+  let slotCounter = 0;
+  container.innerHTML = CATEGORIES.map(cat => {
+    const cardsHtml = cat.items.map((item, idx) => {
+      slotCounter += 1;
+      const imageSrc = ITEM_IMAGE_MAP[item.name] || CATEGORY_IMAGE_MAP[cat.id] || '';
+      const imageMarkup = imageSrc ? `<img src="${imageSrc}" alt="${item.name}">` : `<i class="fas ${CATEGORY_ICONS[cat.id] || 'fa-shirt'}"></i>`;
+      return `
+        <button class="slot-card" type="button" data-cat="${cat.id}" data-idx="${idx}">
+
+          <div class="tag-card">
+            <div class="slot-swatch" style="background:${CATEGORY_COLORS[cat.id]}">${imageMarkup}</div>
+            <div class="slot-name">${item.name}</div>
+            <div class="slot-desc">${item.desc}</div>
+            <div class="slot-price-badge">₦${item.price.toLocaleString()}</div>
+          </div>
+        </button>`;
+    }).join('');
+
+    return `
+      <div class="cat-block">
+        <div class="cat-head">
+          <div>
+            <h3>${cat.title}</h3>
+            <p style="color:var(--gray-dark); font-size:.85rem; margin-top:4px;">${cat.note}</p>
+          </div>
+          <span class="cat-count">${cat.items.length} SLOT${cat.items.length === 1 ? '' : 'S'}</span>
+        </div>
+        <div class="slot-grid">${cardsHtml}</div>
+      </div>`;
+  }).join('');
+
+
+}
+
+document.getElementById('orderCategories').addEventListener('click', (e) => {
+  const card = e.target.closest('.slot-card');
+  if(!card) return;
+  addToCart(card.dataset.cat, parseInt(card.dataset.idx, 10));
+});
+
+/* ============================================================
+   CART + WHATSAPP CHECKOUT
+   ============================================================ */
+function getItem(catId, idx){
+  const cat = CATEGORIES.find(c => c.id === catId);
+  return cat ? cat.items[idx] : null;
+}
+
+function addToCart(catId, idx){
+  const cat = CATEGORIES.find(c => c.id === catId);
+  const item = getItem(catId, idx);
+  if(!cat || !item) return;
+  const existing = cart.find(entry => entry.catId === catId && entry.idx === idx);
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({
+      catId,
+      idx,
+      catTitle: cat.title,
+      itemName: item.name,
+      price: item.price,
+      qty: 1
+    });
+  }
+
+  renderCart();
+}
+
+function renderCart(){
+  const cartCount = document.getElementById('cartCount');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  const totalItems = cart.reduce((sum, entry) => sum + entry.qty, 0);
+  const totalPrice = cart.reduce((sum, entry) => sum + entry.price * entry.qty, 0);
+
+  cartCount.textContent = totalItems;
+  cartTotal.textContent = `₦${totalPrice.toLocaleString()}`;
+
+  if(!cart.length){
+    cartItems.innerHTML = '<p class="cart-empty">Shop any piece you want and add it to your cart. Your selected items will appear in your cart before you continue to finalize the order.</p>';
+    checkoutBtn.disabled = true;
+    return;
+  }
+
+  cartItems.innerHTML = cart.map(entry => `
+    <div class="cart-item">
+      <div>
+        <div class="cart-item-name">${entry.itemName}</div>
+        <div class="cart-item-meta">${entry.catTitle} • ₦${entry.price.toLocaleString()} each</div>
+      </div>
+      <div class="cart-item-controls">
+        <button class="qty-btn" type="button" data-action="decrease" data-cat="${entry.catId}" data-idx="${entry.idx}" aria-label="Decrease quantity">−</button>
+        <span>${entry.qty}</span>
+        <button class="qty-btn" type="button" data-action="increase" data-cat="${entry.catId}" data-idx="${entry.idx}" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+  `).join('');
+
+  checkoutBtn.disabled = false;
+}
+
+document.getElementById('cartItems').addEventListener('click', (e) => {
+  const btn = e.target.closest('.qty-btn');
+  if(!btn) return;
+
+  const action = btn.dataset.action;
+  const catId = btn.dataset.cat;
+  const idx = parseInt(btn.dataset.idx, 10);
+  const entry = cart.find(item => item.catId === catId && item.idx === idx);
+
+  if(!entry) return;
+
+  if(action === 'increase'){
+    entry.qty += 1;
+  } else if(action === 'decrease'){
+    entry.qty -= 1;
+    if(entry.qty <= 0){
+      cart = cart.filter(item => !(item.catId === catId && item.idx === idx));
+    }
+  }
+
+  renderCart();
+});
+
+document.getElementById('clearCartBtn').addEventListener('click', () => {
+  cart = [];
+  renderCart();
+});
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  sendCartToWhatsApp();
+});
+
+function sendCartToWhatsApp(){
+  if(!cart.length) return;
+
+  const lines = cart.map(entry => `• ${entry.itemName} (${entry.catTitle}) x${entry.qty} — ₦${(entry.price * entry.qty).toLocaleString()}`).join('\n');
+  const total = cart.reduce((sum, entry) => sum + entry.price * entry.qty, 0);
+  const message = `Hello F.O.F Clothing! I would like to place the following order from my cart:\n\n${lines}\n\nTotal: ₦${total.toLocaleString()}\n\nPlease confirm the price, size, and fabric options for me. I will share my full details in the chat. And I would like to know the company's account details for completing my order`;
+  const url = `https://wa.me/2349020425785?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+/* ============================================================
+   NAV TOGGLE
+   ============================================================ */
+document.getElementById('navToggle').addEventListener('click', () => {
+  const nav = document.getElementById('mainnav');
+  const open = nav.classList.toggle('open');
+  document.getElementById('navToggle').setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('#mainnav a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mainnav').classList.remove('open');
+}));
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderTicker();
+initAnnouncementSlider();
+renderCatalog('all');
+renderOrderCategories();
+renderCart();
+</script>
+</body>
+</html>
